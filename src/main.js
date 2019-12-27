@@ -2,8 +2,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import { registerApplication, start } from 'single-spa';
 import { match, getManifest } from './utils/global';
-let YCLOUD = require('../node_modules/ycloud-ui/lib/index.js');
-window.YCLOUD = YCLOUD;
+import './utils/init';
 let permission = require('./store/app').default;
 // 注册
 const generateApplication = () => {
