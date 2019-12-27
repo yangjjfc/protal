@@ -1,0 +1,7 @@
+[defaults]
+url = http://172.30.32.15:9000
+org = yangjj
+project = dms-admin
+ 
+[auth]
+token = e22bc8344da44746954e2b78874821f77bf55994d52c45b2b85a60c8c28230fd

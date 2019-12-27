@@ -1,12 +1,37 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-
-Vue.config.productionTip = false
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+import Vue from 'vue';
+import axios from 'axios';
+import { registerApplication, start } from 'single-spa';
+import { match, getManifest } from './utils/global';
+let YCLOUD = require('../node_modules/ycloud-ui/lib/index.js');
+window.YCLOUD = YCLOUD;
+let permission = require('./store/app').default;
+// 注册
+const generateApplication = () => {
+    // 注册事件
+    window.EventBus = new Vue(); 
+    EventBus.$on('getRouter', (data) => { 
+        EventBus.addRoute = data;
+    });
+    axios.get(window.location.origin + '/project.js?' + new Date().getTime()).then(res => {
+        for (let obj of res.data) {
+            registerApplication(obj.name, async () => {
+                let singleVue = null;
+                await getManifest(obj.url + '/manifest.json?' + new Date().getTime(), 'app').then(() => {
+                    singleVue = window.singleVue;
+                });
+                return singleVue;
+            }, () => {
+                if (obj.base) {
+                    return true;
+                } else {
+                    let res = match(window.location.pathname, obj.path);
+                    return res && res.length;
+                }
+            }, {
+                store: permission
+            });
+        } 
+    });
+    start();
+};   
+generateApplication();
