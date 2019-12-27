@@ -1,0 +1,7 @@
+build/*.js
+config/*.js
+dist/*.js
+src/assets/*
+static/*.js
+src/app.vue
+.eslintrc.js
