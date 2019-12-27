@@ -2,16 +2,19 @@
   "name": "protal",
   "version": "0.1.0",
   "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
   "lint-staged": {
-    "src/**/*.js": [
-      "yarn lint",
-      "git add"
-    ]
+    "src/**/*.js": ["yarn lint", "git add"]
   },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint --fix"
   },
   "dependencies": {
     "axios": "^0.19.0",
