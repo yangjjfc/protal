@@ -9,8 +9,8 @@ let permission = require('./store/app').default;
 const generateApplication = () => {
     // 注册事件
     window.EventBus = new Vue(); 
-    EventBus.$on('getRouter', (data) => { 
-        EventBus.addRoute = data;
+    window.EventBus.$on('getRouter', (data) => { 
+        window.EventBus.addRoute = data;
     });
     axios.get(window.location.origin + '/project.js?' + new Date().getTime()).then(res => {
         for (let obj of res.data) {

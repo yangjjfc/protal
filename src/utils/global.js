@@ -1,4 +1,4 @@
-import { axios } from 'ycloud-ui';
+import axios from 'axios';
 
 /**
  * 匹配字符串
