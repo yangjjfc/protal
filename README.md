@@ -3,7 +3,6 @@
 * 微前端入口项目
 * 安装依赖
     - yarn add eslint-plugin-html -D
-    - yarn add cross-env -D
     - yarn add husky lint-staged @commitlint/cli @commitlint/config-conventional -D //提交校验
     - yarn add single-spa -S
 
