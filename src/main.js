@@ -11,8 +11,11 @@ const generateApplication = () => {
     window.EventBus.$on('getRouter', (data) => { 
         window.EventBus.addRoute = data;
     });
-    axios.get(window.location.origin + '/project.js?' + new Date().getTime()).then(res => {
-        for (let obj of res.data) {
+    axios.get('/project.js?' + new Date().getTime()).then(res => {
+        // eslint-disable-next-line no-eval
+        let data = eval(res.data);
+        console.log(data);
+        for (let obj of data) {
             registerApplication(obj.name, async () => {
                 let singleVue = null;
                 await getManifest(obj.url + '/manifest.json?' + new Date().getTime(), 'app').then(() => {
