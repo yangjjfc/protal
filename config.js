@@ -22,7 +22,7 @@ CDN_JS = [...CDN_JS, ...[
     'https://lib.baomitu.com/vue/2.6.10/vue.min.js', // cdn
     'https://lib.baomitu.com/vue-router/3.1.3/vue-router.min.js',
     'https://lib.baomitu.com/vuex/3.1.1/vuex.min.js',
-    'https://cdn.bootcss.com/element-ui/2.12.1/index.js',
+    'https://cdn.bootcss.com/element-ui/2.12.0/index.js',
     'https://lib.baomitu.com/echarts/4.2.1-rc1/echarts-en.common.min.js',
     'https://lib.baomitu.com/jquery/3.3.1/jquery.min.js',
     'https://cdn.bootcss.com/tinymce/4.7.5/tinymce.min.js'
