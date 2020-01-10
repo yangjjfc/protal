@@ -36,7 +36,7 @@ export const runScript = async (url) => new Promise((resolve, reject) => {
 */
 export const getManifest = (url, bundle) => new Promise(async (resolve) => {
     const { data } = await axios.get(url);
-    const { entrypoints, publicPath } = data;
+    let { entrypoints, publicPath } = data;
     const assets = entrypoints[bundle].assets;
     for (let i = 0; i < assets.length; i++) {
         await runScript(publicPath + assets[i]).then(() => {
